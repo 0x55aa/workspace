@@ -34,7 +34,7 @@ let Tlist_Exit_OnlyWindow=1
 "let Tlist_Auto_Open=1 
 
 "WinManager,bufexplorer
-Bundle 'bufexplorer.zip'
+"Bundle 'bufexplorer.zip'
 "Bundle 'winmanager'
 "let g:winManagerWindowLayout='BufExplorer,FileExplorer|TagList'
 "let g:winManagerWindowLayout='FileExplorer,BufExplorer|TagList'
@@ -48,14 +48,14 @@ Bundle 'scrooloose/nerdtree'
 let NERDTreeIgnore=['\.pyc$']
 
 "clisp
-Bundle 'slimv.vim'
-Bundle 'wting/rust.vim'
+"Bundle 'slimv.vim'
+"Bundle 'wting/rust.vim'
 "golang
 Bundle 'jnwhiteh/vim-golang'
 "F7检查语法
 Bundle 'vim-flake8'
-"let g:flake8_ignore="E501"
-"let g:flake8_max_line_length=99
+let g:flake8_ignore="E501"
+let g:flake8_max_line_length=99
 
 "python补全
 Bundle 'davidhalter/jedi-vim'
@@ -79,6 +79,8 @@ let g:syntastic_check_on_open=1
 "Bundle 'snipMate'
 "autocmd FileType python set ft=python.django " For SnipMate
 "autocmd FileType html set ft=htmldjango.html " For SnipMate
+
+Bundle 'my-vim'
 
 call vundle#end()            " required
 
@@ -107,6 +109,7 @@ set showcmd
 "let loaded_matchparen = 1
 "显示行号：
 set number
+"set relativenumber
 "配色方案
 colorscheme darkblue
 "colorscheme desert
