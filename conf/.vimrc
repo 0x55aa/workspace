@@ -51,7 +51,7 @@ let NERDTreeIgnore=['\.pyc$']
 "Bundle 'slimv.vim'
 "Bundle 'wting/rust.vim'
 "golang
-Bundle 'jnwhiteh/vim-golang'
+Bundle 'fatih/vim-go'
 "F7检查语法
 Bundle 'vim-flake8'
 let g:flake8_ignore="E501"
@@ -80,7 +80,7 @@ let g:syntastic_check_on_open=1
 "autocmd FileType python set ft=python.django " For SnipMate
 "autocmd FileType html set ft=htmldjango.html " For SnipMate
 
-Bundle 'my-vim'
+" Bundle 'my-vim'
 
 call vundle#end()            " required
 

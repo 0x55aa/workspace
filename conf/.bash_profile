@@ -6,7 +6,7 @@ export PS1="\[\e[1;31m\]\u\[\e[34m\]\$ \[\e[32m\]\t \[\e[35m\]LV$SHLVL \[\e[36m\
 
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
-export HISTSIZE=10000
+export HISTSIZE=100000
 set autoexpand
 
 export SVN_EDITOR=/usr/bin/vim
@@ -56,3 +56,6 @@ export MAVEN_HOME
 export BXSHARE="$HOME/opt/bochs/share/bochs"
 export PATH="$PATH:$HOME/opt/bochs/bin"
 export GOPATH="/Users/a0x55aa/mygo"
+export REACT_EDITOR=vim
+
+. /Users/a0x55aa/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
