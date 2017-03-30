@@ -11,14 +11,17 @@ set autoexpand
 
 export SVN_EDITOR=/usr/bin/vim
 
-export ANDROID_HOME=/Users/qixi/tools/android-sdk-macosx
+export ANDROID_HOME=~/Library/Android/sdk
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 
 # Setting PATH for Python 3.5
 # The orginal version is saved in .bash_profile.pysave
-PATH="/usr/local/share/dotnet:/Users/qixi/tools/phantomjs-2.1.1-macosx/bin:/Users/qixi/tools/node-v4.2.6-darwin-x64/bin:/usr/local/share/scala-2.11.7/bin:/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
+PATH="/Users/a0x55aa/.cargo/bin:/usr/local/share/dotnet:/Users/qixi/tools/phantomjs-2.1.1-macosx/bin:/Users/qixi/tools/node-v4.2.6-darwin-x64/bin:/usr/local/share/scala-2.11.7/bin:/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
 export PATH
 
 
+# 匹配ssh host
 _complete_hosts () {
 	COMPREPLY=()
 	cur="${COMP_WORDS[COMP_CWORD]}"
@@ -34,6 +37,18 @@ _complete_hosts () {
 	return 0
 }
 complete -F _complete_hosts ssh
+
+# virtualenv auto active
+# Support for bash
+export PROMPT_COMMAND='prompt'
+
+function prompt()
+{
+    if [ "$PWD" != "$MYOLDPWD" ]; then
+        MYOLDPWD="$PWD"
+        test -e .venv && workon `cat .venv`
+    fi
+}
 
 
 # Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x

@@ -1,4 +1,4 @@
-
+set nocompatible              " be iMproved, required
 filetype off                   " required!
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -6,10 +6,11 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'
 
 " jsx
-Bundle 'mxw/vim-jsx'
+Plugin 'mxw/vim-jsx'
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 " My Bundles here:
 "
@@ -27,7 +28,7 @@ Bundle 'mxw/vim-jsx'
 "Bundle 'klen/python-mode'
 
 "TagList
-Bundle 'taglist.vim'
+Plugin 'taglist.vim'
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
 "启动vim自动打开taglist
@@ -41,7 +42,7 @@ let Tlist_Exit_OnlyWindow=1
 "let g:miniBufExplorerMoreThanOne = 0
 "nmap wm :WMToggle<cr>
 
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 "map <F3> :NERDTreeToggle<CR>
 "map <F5> :TlistToggle<CR>
 "let Tlist_Inc_Winwidth = 50
@@ -51,18 +52,18 @@ let NERDTreeIgnore=['\.pyc$']
 "Bundle 'slimv.vim'
 "Bundle 'wting/rust.vim'
 "golang
-Bundle 'fatih/vim-go'
+Plugin 'fatih/vim-go'
 "F7检查语法
-Bundle 'vim-flake8'
-let g:flake8_ignore="E501"
+Plugin 'vim-flake8'
+let g:flake8_ignore="E501,E701"
 let g:flake8_max_line_length=99
 
 "python补全
-Bundle 'davidhalter/jedi-vim'
+Plugin 'davidhalter/jedi-vim'
 
 
 " 使用vim-syntastic需要flake8
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 "在打开文件的时候检查
 let g:syntastic_check_on_open=1
 
@@ -120,6 +121,8 @@ set guioptions-=m
 set guioptions-=T
 "总是显示标签栏
 set showtabline=2
+" 数字都当成十进制
+set nrformats=
 "反显光标当前行颜色
 if has('gui_running')
     set cursorline
@@ -252,12 +255,12 @@ noremap <C-Y> <C-R>
 inoremap <C-Y> <C-O><C-R>
 
 " CTRL-A is Select all 
-noremap <C-A> gggH<C-O>G
-inoremap <C-A> <C-O>gg<C-O>gH<C-O>G
-cnoremap <C-A> <C-C>gggH<C-O>G
-onoremap <C-A> <C-C>gggH<C-O>G
-snoremap <C-A> <C-C>gggH<C-O>G
-xnoremap <C-A> <C-C>ggVG
+" noremap <C-A> gggH<C-O>G
+" inoremap <C-A> <C-O>gg<C-O>gH<C-O>G
+" cnoremap <C-A> <C-C>gggH<C-O>G
+" onoremap <C-A> <C-C>gggH<C-O>G
+" snoremap <C-A> <C-C>gggH<C-O>G
+" xnoremap <C-A> <C-C>ggVG
 
 "修改成了tab标签的移动 
 noremap <C-Tab> :tabn<CR>
