@@ -1,102 +1,103 @@
-"
-"PlugInstall [name ...] [#threads]	Install plugins
-"PlugUpdate [name ...] [#threads]	Install or update plugins
-"PlugClean[!]	Remove unlisted plugins (bang version will clean without prompt)
-"PlugUpgrade	Upgrade vim-plug itself
-"PlugStatus	Check the status of plugins
+set nocompatible              " be iMproved, required
+filetype off                   " required!
 
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-" pip3 install --user pynvim
-call plug#begin('~/.vim/plugged')
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-
-" vim-terminal
-Plug 'tc50cal/vim-terminal'
+" let Vundle manage Vundle
+" required! 
+Plugin 'gmarik/Vundle.vim'
 
 " jsx
-Plug 'mxw/vim-jsx', {'for': 'Javascript'}
+Plugin 'mxw/vim-jsx'
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
+" My Bundles here:
+"
+" original repos on github
+"Bundle 'tpope/vim-fugitive'
+"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+"
+" vim-scripts repos    #http://vim-scripts.org/vim/scripts.html
+
+"pydiction
+"Bundle 'Pydiction'
+"let g:pydiction_location = '~/.vim/bundle/Pydiction/complete-dict'
+"let g:pydiction_menu_height = 20
+
+"Bundle 'klen/python-mode'
+
 "TagList
-"Plug 'taglist.vim'
-"let Tlist_Show_One_File=1
-"let Tlist_Exit_OnlyWindow=1
+Plugin 'taglist.vim'
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
 "启动vim自动打开taglist
 "let Tlist_Auto_Open=1 
 
+"WinManager,bufexplorer
+"Bundle 'bufexplorer.zip'
+"Bundle 'winmanager'
+"let g:winManagerWindowLayout='BufExplorer,FileExplorer|TagList'
+"let g:winManagerWindowLayout='FileExplorer,BufExplorer|TagList'
+"let g:miniBufExplorerMoreThanOne = 0
+"nmap wm :WMToggle<cr>
 
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+Plugin 'scrooloose/nerdtree'
 "map <F3> :NERDTreeToggle<CR>
 "map <F5> :TlistToggle<CR>
 "let Tlist_Inc_Winwidth = 50
-let NERDTreeIgnore=['\.pyc$', '\.pyo$', '^__pycache__$', '\.o$']
+let NERDTreeIgnore=['\.pyc$']
 
 "clisp
 "Bundle 'slimv.vim'
 "Bundle 'wting/rust.vim'
 "golang
-Plug 'fatih/vim-go', {'for': 'golang'}
+Plugin 'fatih/vim-go'
 "F7检查语法
-Plug 'nvie/vim-flake8', {'for': 'python'}
+Plugin 'vim-flake8'
 let g:flake8_ignore="E501,E701"
 let g:flake8_max_line_length=99
 
 "python补全
-" Plug 'davidhalter/jedi-vim', {'for': 'python'}
-
-
-" 新的补全插件试一下
-" https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-let g:deoplete#enable_at_startup = 1
-"python补全
-Plug 'deoplete-plugins/deoplete-jedi', {'for': 'python'}
-
-" " python语法检查
-" Plug 'dense-analysis/ale'
-" "let b:ale_linters = ['flake8', 'gcc']
-" let b:ale_linters = ['flake8', ]
-" let g:ale_sign_error = '>>'
-" let g:ale_sign_warning = '--'
-" let g:ale_sign_column_always = 1
-" " Set this in your vimrc file to disabling highlighting
-" " let g:ale_set_highlights = 0
-" " 只在保存的时候检查
-" " Write this in your vimrc file
-" let g:ale_lint_on_text_changed = 'never'
-" let g:ale_lint_on_insert_leave = 0
-" " You can disable this option too
-" " if you don't want linters to run on opening a file
-" " let g:ale_lint_on_enter = 0
+Plugin 'davidhalter/jedi-vim'
 
 
 " 使用vim-syntastic需要flake8
-Plug 'scrooloose/syntastic', {'for': 'python'}
+Plugin 'scrooloose/syntastic'
 "在打开文件的时候检查
 let g:syntastic_check_on_open=1
 
+" non github repos
+"Bundle 'git://git.wincent.com/command-t.git'
+" ...
+
+"Bundle 'vimwiki'
 
 "let g:vimwiki_list = [{'path': '~/vimwiki','path_html': '~/code/0x55aa/1/wiki/','template_path': '~/code/0x55aa/1/wiki/tmp/','tempalte_default': 'default','template_ext': '.html','auto_export': 1,}]
 "let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,br,hr,div,del,code' 
 
+" django 
+"Bundle 'snipMate'
+"autocmd FileType python set ft=python.django " For SnipMate
+"autocmd FileType html set ft=htmldjango.html " For SnipMate
 
 " Bundle 'my-vim'
-call plug#end()
 
-
+call vundle#end()            " required
 
 filetype plugin indent on     " required!
-
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed..
 
 "开启语法高亮
 syntax on
-
-" 高亮多余的空白字符及 Tab
-highlight RedundantSpaces ctermbg=red guibg=red
-match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
-
 "窗口大小
 if has('gui_running')
     set lines=35 columns=118
@@ -131,7 +132,6 @@ endif
 "set encoding=utf-8
 let &termencoding=&encoding
 set fileencodings=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936,iso-8859-6
-set encoding=utf-8
 
 "背景色
 "set background=light
@@ -162,9 +162,6 @@ set wildmenu
 
 
 
-au FileType javascript.jsx setlocal sw=2 sts=2 et
-au FileType javascript setlocal sw=2 sts=2 et
-
 
 set expandtab
 "一个tab4个空格
@@ -186,19 +183,6 @@ set hlsearch
 set autochdir
 "81列处高亮
 "set cc=100
-
-" 光标行高亮
-"set cursorcolumn
-"set cursorline
-"highlight CursorLine cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
-"highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
-"
-"
-"tsx高亮
-au BufNewFile,BufRead *.tsx set filetype=javascript.jsx
-au BufNewFile,BufRead *.ts set filetype=javascript
-
-
 " 备份，需要创建文件夹
 set backup
 set dir=~/.vim/tmp/backup " backups:"""
@@ -226,10 +210,10 @@ vnoremap <BS> d
 "vnoremap <S-Del> "+x
 
 " CTRL-C and CTRL-Insert are Copy
-vnoremap <C-C> "+y
+"vnoremap <C-C> "+y
 "vnoremap <C-Insert> "+y
 "vmap <C-c> :w !pbcopy<CR><CR>
-"vmap <C-c> y:call system("pbcopy", getreg("\""))<CR>
+vmap <C-c> y:call system("pbcopy", getreg("\""))<CR>
 """"MAC
 "map <F2> :.w !pbcopy<CR><CR>
 "map <F3> :r !pbpaste<CR>
@@ -263,12 +247,12 @@ noremap <C-M>		<C-V>
 
 
 " CTRL-Z is Undo; not in cmdline though
-"noremap <C-Z> u
-"inoremap <C-Z> <C-O>u
+noremap <C-Z> u
+inoremap <C-Z> <C-O>u
 
 " CTRL-Y is Redo (although not repeat); not in cmdline though
-"noremap <C-Y> <C-R>
-"inoremap <C-Y> <C-O><C-R>
+noremap <C-Y> <C-R>
+inoremap <C-Y> <C-O><C-R>
 
 " CTRL-A is Select all 
 " noremap <C-A> gggH<C-O>G
@@ -289,8 +273,6 @@ onoremap <C-Tab> :tabn<CR>
 inoremap <C-B> <Left>
 inoremap <C-F> <Right>
 
-" 复制刚p的文本
-nnoremap gb `[v`]
 
 
 
